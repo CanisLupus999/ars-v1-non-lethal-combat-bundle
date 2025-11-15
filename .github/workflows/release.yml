@@ -37,7 +37,7 @@ jobs:
           files: |
             release/ars-v1-non-lethal-combat-bundle.zip
             module.json
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
           name: Release ${{ steps.get_version.outputs.VERSION }}
           body: |
             ## Version ${{ steps.get_version.outputs.VERSION }}
