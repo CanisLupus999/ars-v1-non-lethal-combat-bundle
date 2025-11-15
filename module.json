@@ -1,0 +1,64 @@
+{
+  "id": "ars-v1-non-lethal-combat-bundle",
+  "title": "[ARS] V1 Non-lethal Combat Bundle",
+  "version": "0.9",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Canis Lupus",
+      "discord": "canislupus4335",
+      "flags": {}
+    }
+  ],
+  "flags": {
+    "canUpload": true
+  },
+  "packs": [
+    {
+      "name": "non-lethal-documantation",
+      "label": "Documentation",
+      "path": "packs/non-lethal-documantation",
+      "type": "JournalEntry",
+      "system": "ars",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "non-lethal-macros",
+      "label": "Macros",
+      "path": "packs/non-lethal-macros",
+      "type": "Macro",
+      "system": "ars",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "non-lethal-items",
+      "label": "Items",
+      "path": "packs/non-lethal-items",
+      "type": "Item",
+      "system": "ars",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "ars",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "description": ""
+}

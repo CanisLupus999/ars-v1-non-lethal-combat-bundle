@@ -1,0 +1,24 @@
+# Foundry VTT Compendium Database Files
+# Ignore database lock and log files, but keep .ldb files (compendium data)
+**/LOCK
+**/CURRENT
+**/LOG
+**/LOG.old
+**/MANIFEST-*
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if you add any build tools later)
+node_modules/
+package-lock.json
+
