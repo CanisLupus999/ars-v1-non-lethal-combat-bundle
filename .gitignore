@@ -1,10 +1,12 @@
 # Foundry VTT Compendium Database Files
 # Ignore database lock and log files, but keep .ldb files (compendium data)
+# Keep CURRENT and MANIFEST files in packs/ directories (needed for compendiums to work)
 **/LOCK
-**/CURRENT
 **/LOG
 **/LOG.old
-**/MANIFEST-*
+# Allow CURRENT and MANIFEST files in packs directories (required for compendiums)
+!packs/**/CURRENT
+!packs/**/MANIFEST-*
 
 # OS Files
 .DS_Store
