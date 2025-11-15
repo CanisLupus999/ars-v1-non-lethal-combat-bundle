@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       
       - name: Get version from tag
         id: get_version
@@ -44,10 +48,27 @@ jobs:
             
             See the [README](https://github.com/${{ github.repository }}/blob/main/README.md) for installation instructions.
             
-            **Manifest URL:**
+            **Manifest URL (for auto-updates):**
             ```
-            https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/module.json
+            https://raw.githubusercontent.com/${{ github.repository }}/main/module.json
             ```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Update main branch with latest release URLs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main:main || true
+          git checkout main
+          # Update manifest and download URLs in module.json to point to the new release
+          sed -i "s|releases/download/v[0-9.]*/module.json|releases/download/${{ github.ref_name }}/module.json|g" module.json
+          sed -i "s|releases/download/v[0-9.]*/ars-v1-non-lethal-combat-bundle.zip|releases/download/${{ github.ref_name }}/ars-v1-non-lethal-combat-bundle.zip|g" module.json
+          # Also update the version number in module.json to match the release
+          sed -i "s|\"version\": \"[0-9.]*\"|\"version\": \"${{ steps.get_version.outputs.VERSION }}\"|g" module.json
+          git add module.json
+          if ! git diff --staged --quiet; then
+            git commit -m "Update manifest URLs to point to release ${{ github.ref_name }}"
+            git push origin main
+          fi
 
