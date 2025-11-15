@@ -1,11 +1,11 @@
 {
   "id": "ars-v1-non-lethal-combat-bundle",
   "title": "[ARS] V1 Non-lethal Combat Bundle",
-  "version": "0.9",
+  "version": "0.9.1",
   "url": "https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle",
   "bugs": "https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/issues",
-  "manifest": "https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/releases/download/v0.9/module.json",
-  "download": "https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/releases/download/v0.9/ars-v1-non-lethal-combat-bundle.zip",
+  "manifest": "https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/releases/download/v0.9.1/module.json",
+  "download": "https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/releases/download/v0.9.1/ars-v1-non-lethal-combat-bundle.zip",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
