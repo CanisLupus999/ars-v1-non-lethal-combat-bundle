@@ -1,0 +1,53 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+      
+      - name: Create module directory
+        run: |
+          mkdir -p release/ars-v1-non-lethal-combat-bundle
+          cp module.json README.md release/ars-v1-non-lethal-combat-bundle/ 2>/dev/null || true
+          if [ -d "packs" ]; then cp -r packs release/ars-v1-non-lethal-combat-bundle/; fi
+          if [ -d "assets" ]; then cp -r assets release/ars-v1-non-lethal-combat-bundle/; fi
+      
+      - name: Create ZIP file
+        run: |
+          cd release
+          zip -r ars-v1-non-lethal-combat-bundle.zip ars-v1-non-lethal-combat-bundle/
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/ars-v1-non-lethal-combat-bundle.zip
+            module.json
+          tag_name: ${{ github.ref }}
+          name: Release ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            ## Version ${{ steps.get_version.outputs.VERSION }}
+            
+            See the [README](https://github.com/${{ github.repository }}/blob/main/README.md) for installation instructions.
+            
+            **Manifest URL:**
+            ```
+            https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/module.json
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
