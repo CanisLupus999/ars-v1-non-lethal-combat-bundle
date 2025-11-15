@@ -22,9 +22,9 @@
   },
   "packs": [
     {
-      "name": "non-lethal-documantation",
+      "name": "non-lethal-documentation",
       "label": "Documentation",
-      "path": "packs/non-lethal-documantation",
+      "path": "packs/non-lethal-documentation",
       "type": "JournalEntry",
       "system": "ars",
       "ownership": {
