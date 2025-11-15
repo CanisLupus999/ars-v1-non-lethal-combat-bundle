@@ -61,14 +61,15 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin main:main || true
           git checkout main
-          # Update manifest and download URLs in module.json to point to the new release
-          sed -i "s|releases/download/v[0-9.]*/module.json|releases/download/${{ github.ref_name }}/module.json|g" module.json
+          # Update manifest URL to point to main branch (for auto-updates)
+          sed -i "s|\"manifest\": \"[^\"]*\"|\"manifest\": \"https://raw.githubusercontent.com/${{ github.repository }}/main/module.json\"|g" module.json
+          # Update download URL to point to the new release
           sed -i "s|releases/download/v[0-9.]*/ars-v1-non-lethal-combat-bundle.zip|releases/download/${{ github.ref_name }}/ars-v1-non-lethal-combat-bundle.zip|g" module.json
-          # Also update the version number in module.json to match the release
+          # Update the version number in module.json to match the release
           sed -i "s|\"version\": \"[0-9.]*\"|\"version\": \"${{ steps.get_version.outputs.VERSION }}\"|g" module.json
           git add module.json
           if ! git diff --staged --quiet; then
-            git commit -m "Update manifest URLs to point to release ${{ github.ref_name }}"
+            git commit -m "Update to version ${{ steps.get_version.outputs.VERSION }} - manifest points to main branch for auto-updates"
             git push origin main
           fi
 
