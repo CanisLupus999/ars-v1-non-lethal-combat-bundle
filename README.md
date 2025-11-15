@@ -6,7 +6,7 @@ A Foundry VTT content module for the ARS system providing non-lethal combat opti
 
 1. In Foundry VTT, go to the **Add-on Modules** tab
 2. Click **Install Module**
-3. Paste the manifest URL: `https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/releases/download/v0.9.1/module.json`
+3. Paste the manifest URL: `https://github.com/CanisLupus999/ars-v1-non-lethal-combat-bundle/releases/download/v0.9.2/module.json`
 4. Enable the module in your world's module settings
 
 ## Compatibility
