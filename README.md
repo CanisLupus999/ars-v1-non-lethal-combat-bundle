@@ -1,6 +1,6 @@
 # [ARS] V1 Non-lethal Combat Bundle
 
-A Foundry VTT content module for the ARS system providing non-lethal combat options including macros, items, and documentation.
+A Foundry VTT content module for the ARS system providing non-lethal combat automation.
 
 ## Installation
 
